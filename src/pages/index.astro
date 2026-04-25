@@ -1,11 +1,271 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { Image } from 'astro:assets';
+import heroImg from '../assets/dutch-iptv-hero.png';
+import lifestyleImg from '../assets/beste-iptv-lifestyle.png';
+const plans = [
+  { label:'Beste Deal', period:'12 Maanden', total:'€55', monthly:'€4,58', save:'Bespaar 43%', features:['Alle wereldwijde zenders','Bijgewerkte films & series','EPG Gids inbegrepen','Catchup functie','VIP 24/7 Support','🎁 1 Jaar Speler Licentie Bonus'], best:true },
+  { label:'Slim', period:'6 Maanden', total:'€30', monthly:'€5,00', save:'Bespaar 37%', features:['Alle wereldwijde zenders','Bijgewerkte films & series','EPG Gids inbegrepen','Catchup functie','24/7 Support'] },
+  { label:'Populair', period:'3 Maanden', total:'€20', monthly:'€6,67', save:'Bespaar 17%', features:['Alle wereldwijde zenders','Bijgewerkte films & series','EPG Gids inbegrepen','Catchup functie','24/7 Support'] },
+  { label:'Starter', period:'1 Maand', total:'€8', monthly:'€8,00', save:'', features:['Alle wereldwijde zenders','Bijgewerkte films & series','EPG Gids inbegrepen','Catchup functie','24/7 Support'] },
+];
+const faqs = [
+  { q:'Wat is Dutch IPTV?', a:'Dutch IPTV is een premium IPTV-dienst met meer dan 10.000 live zenders, films en series via het internet op elk apparaat.' },
+  { q:'Op welke apparaten werkt het?', a:'Smart TV (Samsung/LG), Android TV, Fire TV Stick, Apple TV, smartphone, tablet en pc/laptop.' },
+  { q:'Hoe snel wordt mijn abonnement geactiveerd?', a:'Direct na betaling ontvang je de inloggegevens via WhatsApp — gemiddeld binnen 5 minuten.' },
+  { q:'Wat is de minimale internetsnelheid?', a:'Minimaal 10 Mbps voor HD, 25 Mbps voor 4K. De meeste Nederlandse verbindingen voldoen ruimschoots.' },
+  { q:'Kan ik Dutch IPTV gratis uitproberen?', a:'Ja! Stuur een berichtje via WhatsApp voor een gratis proefperiode van 24 uur.' },
+  { q:'Zijn er verborgen kosten?', a:'Nee. De prijs die je ziet is alles wat je betaalt. Geen installatiekosten, geen verborgen toeslagen.' },
+  { q:'Welke zenders zijn beschikbaar?', a:'Alle Nederlandse, Belgische, internationale en wereldwijde zenders — sport, nieuws, entertainment, kids en meer.' },
+  { q:'Wat is de Catchup functie?', a:'Met Catchup kun je gemiste uitzendingen tot 7 dagen terugkijken — nooit meer een aflevering missen.' },
+  { q:'Wat is de EPG gids?', a:'De Electronic Programme Guide toont een compleet tv-gids met alle programma\'s en tijden, net als bij een gewone tv-ontvanger.' },
+  { q:'Hoe werkt de referral actie?', a:'Stuur jouw WhatsApp-nummer mee bij je bestelling als referrer, of geef het nummer van degene die jou heeft doorverwezen. Jullie beiden ontvangen 1 maand gratis.' },
+];
 ---
-
 <Layout>
-	<Welcome />
+  <!-- HERO -->
+  <section class="hero-glow min-h-screen flex items-center pt-20 pb-16">
+    <div class="section-container text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 text-sm text-orange-400 font-medium animate-fade-up">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse inline-block"></span>
+        Honderden tevreden klanten vertrouwen op Dutch IPTV
+      </div>
+      <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight animate-fade-up animate-delay-100">
+        De Beste <span class="gradient-text">Dutch IPTV</span><br/>van Nederland
+      </h1>
+      <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-fade-up animate-delay-200">
+        Stream meer dan <strong class="text-white">10.000+ live zenders</strong>, films en series in <strong class="text-white">Full HD en 4K</strong>. Dutch IPTV — de #1 beste iptv aanbieder.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up animate-delay-300">
+        <a href="#prijzen" class="btn-primary text-lg px-8 py-4">Bestel Nu</a>
+        <a href="#functies" class="btn-outline text-lg px-8 py-4">Bekijk Functies</a>
+      </div>
+      <!-- Hero Image -->
+      <div class="mt-14 rounded-2xl overflow-hidden max-w-4xl mx-auto glass p-2 animate-fade-up animate-delay-400">
+        <Image
+          src={heroImg}
+          alt="Dutch IPTV – stream op alle apparaten in Full HD en 4K kwaliteit"
+          title="Dutch IPTV – Premium Streaming op Alle Apparaten"
+          width={1024}
+          height={576}
+          loading="eager"
+          fetchpriority="high"
+          quality={85}
+          format="webp"
+          class="rounded-xl w-full object-cover"
+        />
+      </div>
+      <div class="grid grid-cols-3 gap-6 max-w-lg mx-auto mt-12">
+        <div class="glass rounded-2xl p-4"><div class="text-3xl font-black gradient-text">10K+</div><div class="text-xs text-slate-400 mt-1">Live Zenders</div></div>
+        <div class="glass rounded-2xl p-4"><div class="text-3xl font-black gradient-text">4K</div><div class="text-xs text-slate-400 mt-1">Ultra HD</div></div>
+        <div class="glass rounded-2xl p-4"><div class="text-3xl font-black gradient-text">24/7</div><div class="text-xs text-slate-400 mt-1">Support</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="functies" class="py-24">
+    <div class="section-container">
+      <div class="text-center mb-16">
+        <div class="section-divider"></div>
+        <h2 class="text-4xl font-black text-white mb-4">Waarom Dutch IPTV?</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">Alles wat je nodig hebt voor de <strong class="text-orange-400">beste iptv</strong> ervaring in Nederland.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {[
+          { icon:'📺', title:'10.000+ Wereldwijde Zenders', desc:'Alle Nederlandse, Belgische en internationale zenders — sport, nieuws, entertainment en meer uit de hele wereld.' },
+          { icon:'🎬', title:'Bijgewerkte Films & Series', desc:'Onze bibliotheek van 50.000+ films en series wordt dagelijks bijgewerkt met de nieuwste releases.' },
+          { icon:'📅', title:'EPG Programmagids', desc:'Volledige elektronische programmagids — zie precies wat er nu en straks op elk kanaal wordt uitgezonden.' },
+          { icon:'⏪', title:'Catchup Functie', desc:'Gemiste uitzendingen? Kijk tot 7 dagen terug met onze ingebouwde catchup functie.' },
+          { icon:'⚡', title:'Razendsnelle Streams', desc:'Geen buffering, geen vertragingen. Onze servers garanderen een stabiele verbinding in HD en 4K.' },
+          { icon:'🎧', title:'24/7 Klantenservice', desc:'Ons support-team staat dag en nacht voor je klaar via WhatsApp en Telegram.' },
+        ].map(f=>(
+          <div class="glass rounded-2xl p-6 hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-1">
+            <div class="feature-icon mb-4"><span class="text-xl" aria-hidden="true">{f.icon}</span></div>
+            <h3 class="text-white font-bold text-lg mb-2">{f.title}</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+      <!-- Lifestyle Image -->
+      <div class="rounded-2xl overflow-hidden glass p-2">
+        <Image
+          src={lifestyleImg}
+          alt="Beste IPTV Nederland – geniet van premium streaming in uw woonkamer"
+          title="Beste IPTV Nederland – Dutch IPTV Lifestyle"
+          width={1024}
+          height={576}
+          loading="lazy"
+          quality={80}
+          format="webp"
+          class="rounded-xl w-full object-cover"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="prijzen" class="py-24 relative">
+    <div class="absolute inset-0 hero-glow pointer-events-none"></div>
+    <div class="section-container relative">
+      <div class="text-center mb-16">
+        <div class="section-divider"></div>
+        <h2 class="text-4xl font-black text-white mb-4">Kies Jouw Dutch IPTV Pakket</h2>
+        <p class="text-slate-400">Geen verborgen kosten. Geen contract.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {plans.map(p=>(
+          <div class={`rounded-2xl p-6 flex flex-col relative ${p.best ? 'glow-orange' : 'glass'}`}
+            style={p.best ? 'background:linear-gradient(135deg,rgba(249,115,22,0.12),rgba(234,88,12,0.08));border:2px solid rgba(249,115,22,0.45)' : ''}>
+            {p.best && <div class="absolute -top-3.5 left-1/2 -translate-x-1/2"><span class="popular-badge">⭐ Meest Populair</span></div>}
+            <div class={`text-sm font-medium mb-1 mt-2 ${p.best ? 'text-orange-400' : 'text-slate-400'}`}>{p.label}</div>
+            <h3 class="text-white font-bold text-xl mb-3">{p.period}</h3>
+            <div class="mb-1">
+              <span class={`text-4xl font-black ${p.best ? 'gradient-text' : 'text-white'}`}>{p.total}</span>
+              <span class="text-slate-400 text-sm ml-1">totaal</span>
+            </div>
+            <div class="text-slate-500 text-xs mb-1">{p.monthly}/maand</div>
+            {p.save && <p class="text-green-400 text-xs font-semibold mb-4">{p.save}</p>}
+            {!p.save && <div class="mb-4"></div>}
+            <ul class="space-y-2 mb-8 flex-1">
+              {p.features.map(f=>(
+                <li class="flex items-start gap-2 text-sm text-slate-300">
+                  <svg class="mt-0.5 flex-shrink-0" width="15" height="15" viewBox="0 0 20 20" fill={p.best?'#f97316':'#22c55e'} aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <a href={`https://wa.me/31612345678?text=Ik%20wil%20het%20${encodeURIComponent(p.period)}%20pakket%20bestellen`} target="_blank" rel="noopener noreferrer nofollow"
+              class={p.best ? 'btn-primary text-sm py-3 text-center' : 'btn-outline text-sm py-3 text-center'}>
+              Bestel Nu
+            </a>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-slate-500 text-sm mt-8">Veilig betalen met iDEAL, creditcard of PayPal. Directe activering na betaling.</p>
+    </div>
+  </section>
+
+  <!-- REFERRAL -->
+  <section id="referral" class="py-24">
+    <div class="section-container">
+      <div class="referral-banner rounded-3xl p-8 md:p-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/20 border border-green-500/30 text-green-400 text-xs font-bold uppercase tracking-wider mb-5">🎁 Vrienden Actie</div>
+            <h2 class="text-3xl md:text-4xl font-black text-white mb-4 leading-tight">Vertel een Vriend —<br/><span class="text-green-400">Jullie Beiden Winnen!</span></h2>
+            <p class="text-slate-200 text-lg leading-relaxed mb-6">
+              Vertel een vriend over Dutch IPTV! Als jouw vriend zich aanmeldt, krijgen <strong class="text-white">jullie allebei 1 maand extra gratis</strong>.
+            </p>
+            <div class="glass rounded-xl p-5 border border-green-500/20 mb-6">
+              <p class="text-white font-semibold mb-3">📱 Hoe werkt het?</p>
+              <ul class="space-y-2 text-slate-200 text-sm">
+                <li class="flex items-start gap-2"><span class="text-green-400 font-bold">1.</span> Deel jouw WhatsApp-nummer met een vriend</li>
+                <li class="flex items-start gap-2"><span class="text-green-400 font-bold">2.</span> Jouw vriend vult jouw WhatsApp-nummer in bij de bestelling als referrer</li>
+                <li class="flex items-start gap-2"><span class="text-green-400 font-bold">3.</span> Jullie beiden ontvangen automatisch 1 maand gratis Dutch IPTV</li>
+              </ul>
+            </div>
+            <a href="https://wa.me/31612345678?text=Ik%20wil%20mijn%20referral%20actie%20activeren!" target="_blank" rel="noopener noreferrer"
+              class="btn-primary inline-flex" style="background:linear-gradient(135deg,#16a34a,#15803d);box-shadow:0 4px 24px rgba(34,197,94,0.35);">
+              Ontvang 1 Maand Gratis
+            </a>
+          </div>
+          <div class="glass rounded-2xl p-6 border border-green-500/20 text-center">
+            <div class="text-6xl mb-4">🎁</div>
+            <div class="text-5xl font-black text-white mb-2">+1 Maand</div>
+            <div class="text-green-400 font-semibold text-lg mb-4">Gratis voor Jou & Vriend</div>
+            <div class="border-t border-green-500/20 pt-4 space-y-2">
+              <div class="flex justify-between text-sm"><span class="text-slate-400">Geldig voor:</span><span class="text-white font-semibold">Alle pakketten</span></div>
+              <div class="flex justify-between text-sm"><span class="text-slate-400">Limiet:</span><span class="text-white font-semibold">Onbeperkt</span></div>
+              <div class="flex justify-between text-sm"><span class="text-slate-400">Activering:</span><span class="text-green-400 font-semibold">Direct actief</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="py-16">
+    <div class="section-container">
+      <div class="text-center mb-12"><div class="section-divider"></div><h2 class="text-3xl font-black text-white">Wat Klanten Zeggen</h2></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { name:'Erik van Dam', stars:5, text:'Al 2 jaar klant bij Dutch IPTV. Geen storingen, geweldige kwaliteit en de klantenservice reageert altijd snel via WhatsApp.' },
+          { name:'Fatima El Idrissi', stars:5, text:'De beste iptv die ik ooit heb geprobeerd. Alle internationale zenders in HD. De EPG gids is super handig. Absoluut aan te raden!' },
+          { name:'Jan Hendriksen', stars:5, text:'Vrienden tip werkt perfect! We hebben allebei een gratis maand gekregen. Super service en geweldige Dutch IPTV kwaliteit.' },
+        ].map(t=>(
+          <div class="glass rounded-2xl p-6">
+            <div class="flex mb-3">{Array.from({length:t.stars}).map(()=><span class="text-orange-400 text-lg">★</span>)}</div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">"{t.text}"</p>
+            <div class="font-semibold text-white text-sm">{t.name}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-24">
+    <div class="section-container max-w-3xl">
+      <div class="text-center mb-12"><div class="section-divider"></div><h2 class="text-4xl font-black text-white mb-4">Veelgestelde Vragen</h2><p class="text-slate-400">Alles wat je wilt weten over Dutch IPTV.</p></div>
+      <div class="glass rounded-2xl overflow-hidden">
+        {faqs.map(f=>(
+          <details class="faq-item group">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none text-white font-semibold hover:text-orange-400 transition-colors">
+              {f.q}
+              <svg class="w-5 h-5 text-orange-500 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </summary>
+            <div class="px-6 pb-6 text-slate-400 text-sm leading-relaxed">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-24 relative">
+    <div class="absolute inset-0 hero-glow pointer-events-none"></div>
+    <div class="section-container relative text-center max-w-3xl">
+      <div class="section-divider"></div>
+      <h2 class="text-4xl font-black text-white mb-4">Neem Contact Op</h2>
+      <p class="text-slate-400 mb-10">Heb je vragen over Dutch IPTV of de beste iptv pakketten? Ons team staat klaar om je te helpen via je favoriete kanaal.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+        <a href="https://wa.me/31612345678" target="_blank" rel="noopener noreferrer"
+          class="glass rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-green-500/40 hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.3);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </div>
+          <div class="text-white font-bold">WhatsApp</div>
+          <div class="text-slate-400 text-sm">Direct antwoord</div>
+        </a>
+        <a href="https://t.me/dutchiptv" target="_blank" rel="noopener noreferrer"
+          class="glass rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-blue-500/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background:rgba(0,136,204,0.15);border:1px solid rgba(0,136,204,0.3);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#0088CC" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </div>
+          <div class="text-white font-bold">Telegram</div>
+          <div class="text-slate-400 text-sm">Snel & Eenvoudig</div>
+        </a>
+        <a href="mailto:info@dutchiptv.nl"
+          class="glass rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="text-white font-bold">E-mail</div>
+          <div class="text-slate-400 text-sm">info@dutchiptv.nl</div>
+        </a>
+      </div>
+      <a href="/contact" class="btn-outline inline-flex">Ga naar Contactpagina</a>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="py-20">
+    <div class="section-container text-center max-w-2xl">
+      <h2 class="text-4xl font-black text-white mb-4">Klaar om te Beginnen?</h2>
+      <p class="text-slate-400 mb-8">Sluit je aan bij honderden tevreden klanten. Start vandaag nog met Dutch IPTV — de beste iptv van Nederland.</p>
+      <a href="#prijzen" class="btn-primary text-xl px-10 py-5">Bestel Nu — Direct Actief</a>
+    </div>
+  </section>
 </Layout>

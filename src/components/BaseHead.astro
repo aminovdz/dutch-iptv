@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  canonical = 'https://dutch-iptv.cc',
+  ogImage = '/dutch-iptv-hero.png',
+} = Astro.props;
+
+const siteUrl = 'https://dutch-iptv.cc';
+---
+
+<!-- Charset & Viewport -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Primary Meta -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content="Dutch IPTV, beste iptv, iptv nederland, iptv kopen, iptv abonnement, iptv aanbieder, iptv pakket" />
+<meta name="author" content="Dutch IPTV" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={`${siteUrl}${ogImage}`} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="nl_NL" />
+<meta property="og:site_name" content="Dutch IPTV" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Dutch IPTV",
+    "url": siteUrl,
+    "description": description,
+    "areaServed": "NL",
+    "availableLanguage": ["nl"],
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "EUR",
+      "lowPrice": "8",
+      "highPrice": "55",
+      "offerCount": "4"
+    }
+  })}
+</script>
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<!-- Astro Generator -->
+<meta name="generator" content={Astro.generator} />
