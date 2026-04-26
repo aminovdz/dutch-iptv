@@ -49,19 +49,69 @@ const siteUrl = 'https://dutch-iptv.cc';
 <script type="application/ld+json">
   {JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Dutch IPTV",
-    "url": siteUrl,
-    "description": description,
-    "areaServed": "NL",
-    "availableLanguage": ["nl"],
-    "offers": {
-      "@type": "AggregateOffer",
-      "priceCurrency": "EUR",
-      "lowPrice": "8",
-      "highPrice": "55",
-      "offerCount": "4"
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${siteUrl}/#organization`,
+        "name": "Dutch IPTV",
+        "url": siteUrl,
+        "description": description,
+        "areaServed": "NL",
+        "availableLanguage": ["nl"]
+      },
+      {
+        "@type": "Product",
+        "@id": `${siteUrl}/#product`,
+        "name": "Dutch IPTV Abonnement",
+        "description": "Premium IPTV service met 10.000+ zenders in Full HD en 4K.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Dutch IPTV"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1250"
+        },
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "EUR",
+          "lowPrice": "8.00",
+          "highPrice": "55.00",
+          "offerCount": "4",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Starter 1 Maand",
+              "price": "8.00",
+              "priceCurrency": "EUR",
+              "url": `${siteUrl}/#prijzen`
+            },
+            {
+              "@type": "Offer",
+              "name": "Populair 3 Maanden",
+              "price": "20.00",
+              "priceCurrency": "EUR",
+              "url": `${siteUrl}/#prijzen`
+            },
+            {
+              "@type": "Offer",
+              "name": "Slim 6 Maanden",
+              "price": "30.00",
+              "priceCurrency": "EUR",
+              "url": `${siteUrl}/#prijzen`
+            },
+            {
+              "@type": "Offer",
+              "name": "Beste Deal 12 Maanden",
+              "price": "55.00",
+              "priceCurrency": "EUR",
+              "url": `${siteUrl}/#prijzen`
+            }
+          ]
+        }
+      }
+    ]
   })}
 </script>
 
@@ -82,14 +132,3 @@ const siteUrl = 'https://dutch-iptv.cc';
   gtag('config', 'G-XXXXXXXXXX');
 </script>
 
-<!-- Disable Right-Click and Inspect Element -->
-<script is:inline>
-  document.addEventListener('contextmenu', event => event.preventDefault());
-  document.onkeydown = function(e) {
-    if(event.keyCode == 123) { return false; }
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; }
-    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
-  }
-</script>
