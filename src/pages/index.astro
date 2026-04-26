@@ -1,8 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import heroImg from '../assets/nl-premium-hero.png';
-import lifestyleImg from '../assets/nl-premium-lifestyle.png';
 const plans = [
   { label:'Beste Deal', period:'12 Maanden', total:'€55', monthly:'€4,58', save:'Bespaar 43%', features:['Alle wereldwijde zenders','Bijgewerkte films & series','EPG Gids inbegrepen','Catchup functie','VIP 24/7 Support','🎁 1 Jaar Speler Licentie Bonus'], best:true },
   { label:'Slim', period:'6 Maanden', total:'€30', monthly:'€5,00', save:'Bespaar 37%', features:['Alle wereldwijde zenders','Bijgewerkte films & series','EPG Gids inbegrepen','Catchup functie','24/7 Support'] },
@@ -42,16 +39,14 @@ const faqs = [
       </div>
       <!-- Hero Image -->
       <div class="mt-14 rounded-2xl overflow-hidden max-w-4xl mx-auto glass p-2 animate-fade-up animate-delay-400">
-        <Image
-          src={heroImg}
+        <img
+          src="/images/nl-premium-hero.webp"
           alt="Dutch IPTV – stream op alle apparaten in Full HD en 4K kwaliteit"
           title="Dutch IPTV – Premium Streaming op Alle Apparaten"
-          width={1024}
-          height={576}
+          width="1024"
+          height="576"
           loading="eager"
           fetchpriority="high"
-          quality={85}
-          format="webp"
           class="rounded-xl w-full object-cover"
         />
       </div>
@@ -89,15 +84,13 @@ const faqs = [
       </div>
       <!-- Lifestyle Image -->
       <div class="rounded-2xl overflow-hidden glass p-2">
-        <Image
-          src={lifestyleImg}
+        <img
+          src="/images/nl-premium-lifestyle.webp"
           alt="Beste IPTV Nederland – geniet van premium streaming in uw woonkamer"
           title="Beste IPTV Nederland – Dutch IPTV Lifestyle"
-          width={1024}
-          height={576}
+          width="1024"
+          height="576"
           loading="lazy"
-          quality={80}
-          format="webp"
           class="rounded-xl w-full object-cover"
         />
       </div>
