@@ -46,74 +46,72 @@ const siteUrl = 'https://dutch-iptv.cc';
 <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
 
 <!-- Schema.org Structured Data -->
-<script type="application/ld+json">
-  {JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": `${siteUrl}/#organization`,
-        "name": "Dutch IPTV",
-        "url": siteUrl,
-        "description": description,
-        "areaServed": "NL",
-        "availableLanguage": ["nl"]
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": "Dutch IPTV",
+      "url": siteUrl,
+      "description": description,
+      "areaServed": "NL",
+      "availableLanguage": ["nl"]
+    },
+    {
+      "@type": "Product",
+      "@id": `${siteUrl}/#product`,
+      "name": "Dutch IPTV Abonnement",
+      "description": "Premium IPTV service met 10.000+ zenders in Full HD en 4K.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Dutch IPTV"
       },
-      {
-        "@type": "Product",
-        "@id": `${siteUrl}/#product`,
-        "name": "Dutch IPTV Abonnement",
-        "description": "Premium IPTV service met 10.000+ zenders in Full HD en 4K.",
-        "brand": {
-          "@type": "Brand",
-          "name": "Dutch IPTV"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "1250"
-        },
-        "offers": {
-          "@type": "AggregateOffer",
-          "priceCurrency": "EUR",
-          "lowPrice": "8.00",
-          "highPrice": "55.00",
-          "offerCount": "4",
-          "offers": [
-            {
-              "@type": "Offer",
-              "name": "Starter 1 Maand",
-              "price": "8.00",
-              "priceCurrency": "EUR",
-              "url": `${siteUrl}/#prijzen`
-            },
-            {
-              "@type": "Offer",
-              "name": "Populair 3 Maanden",
-              "price": "20.00",
-              "priceCurrency": "EUR",
-              "url": `${siteUrl}/#prijzen`
-            },
-            {
-              "@type": "Offer",
-              "name": "Slim 6 Maanden",
-              "price": "30.00",
-              "priceCurrency": "EUR",
-              "url": `${siteUrl}/#prijzen`
-            },
-            {
-              "@type": "Offer",
-              "name": "Beste Deal 12 Maanden",
-              "price": "55.00",
-              "priceCurrency": "EUR",
-              "url": `${siteUrl}/#prijzen`
-            }
-          ]
-        }
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "1250"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "EUR",
+        "lowPrice": "8.00",
+        "highPrice": "55.00",
+        "offerCount": "4",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Starter 1 Maand",
+            "price": "8.00",
+            "priceCurrency": "EUR",
+            "url": `${siteUrl}/#prijzen`
+          },
+          {
+            "@type": "Offer",
+            "name": "Populair 3 Maanden",
+            "price": "20.00",
+            "priceCurrency": "EUR",
+            "url": `${siteUrl}/#prijzen`
+          },
+          {
+            "@type": "Offer",
+            "name": "Slim 6 Maanden",
+            "price": "30.00",
+            "priceCurrency": "EUR",
+            "url": `${siteUrl}/#prijzen`
+          },
+          {
+            "@type": "Offer",
+            "name": "Beste Deal 12 Maanden",
+            "price": "55.00",
+            "priceCurrency": "EUR",
+            "url": `${siteUrl}/#prijzen`
+          }
+        ]
       }
-    ]
-  })}
-</script>
+    }
+  ]
+})} />
 
 <!-- Favicons -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
