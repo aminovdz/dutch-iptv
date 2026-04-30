@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://dutchiptv.nl',
+  site: 'https://dutch-iptv.cc',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
